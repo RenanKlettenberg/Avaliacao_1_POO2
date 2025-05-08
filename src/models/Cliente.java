@@ -1,13 +1,49 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package models;
 
-/**
- *
- * @author 12252665998
- */
 public class Cliente {
+    
+    private String nome;
+    private String cpf;
+    private String telefone;
+    private int pontos;
+
+    public Cliente(String nome, String cpf, String telefone, int pontos) {
+        this.nome = nome;
+        this.cpf = cpf;
+        this.telefone = telefone;
+        this.pontos = pontos;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    public int getPontos() {
+        return pontos;
+    }
+
+    public void setPontos(int pontos) {
+        this.pontos = pontos;
+    }
     
 }
