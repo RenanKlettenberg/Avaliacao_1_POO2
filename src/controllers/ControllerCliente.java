@@ -1,13 +1,19 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package controllers;
 
-/**
- *
- * @author 12252665998
- */
+import daos.ClienteDAO;
+import models.Cliente;
+
 public class ControllerCliente {
+    
+    private ClienteDAO dao;
+    
+    public ControllerCliente(){
+        this.dao = new ClienteDAO();
+    }
+    
+    public boolean cadastrar(String nome, String telefone, String cpf) {
+        Cliente c = new Cliente(nome,cpf,telefone);
+        return dao.cadastrar(c);
+    }
     
 }

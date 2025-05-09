@@ -18,11 +18,10 @@ public class Cliente implements Serializable {
     private String telefone;
     private int pontos;
 
-    public Cliente(String nome, String cpf, String telefone, int pontos) {
+    public Cliente(String nome, String cpf, String telefone) {
         this.nome = nome;
         this.cpf = cpf;
         this.telefone = telefone;
-        this.pontos = pontos;
     }
     
     public Long getId() {
