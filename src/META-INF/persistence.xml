@@ -3,6 +3,7 @@
   <persistence-unit name="Avaliacao_1_POO2PU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>models.Cliente</class>
+    <class>models.Produto</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/TrabalhoPOO"/>
       <property name="javax.persistence.jdbc.user" value="postgres"/>
