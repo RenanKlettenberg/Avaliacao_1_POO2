@@ -237,6 +237,7 @@ public class CadastrarProduto extends javax.swing.JFrame {
 
     private void SalvaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalvaBtnActionPerformed
         ControllerProduto control=new ControllerProduto();
+        System.out.println("1"+NomeInput.getText()+"2"+TipoInput.getText()+"3"+QuantidadeInput.getText()+"4"+PrecoInput.getText());
         control.cadastrar(NomeInput.getText(),TipoInput.getText(),QuantidadeInput.getText(),PrecoInput.getText());
         
     }//GEN-LAST:event_SalvaBtnActionPerformed

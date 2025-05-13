@@ -4,11 +4,10 @@
  */
 package daos;
 
-import Utils.Conexao;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import models.Produto;
 
 /**
@@ -18,25 +17,14 @@ import models.Produto;
 public class ProdutoDAO {
     public static Produto salvar(Produto p){
         //acessa banco de dados
-        try{                   
-          String sql = "insert into tb_produto(nome, tipo)values(?,?)";
-          PreparedStatement stm = Conexao.getConexao()
-                  .prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-          stm.setString(1, p.getNome());
-          stm.setString(2, p.getTipo());
-          
-          int linhas = stm.executeUpdate();
-          if(linhas > 0){
-              ResultSet rs = stm.getGeneratedKeys();
-              if(rs.next())
-                p.setId(rs.getInt(1));
-          }                            
-        }catch(SQLException ex){
-            throw new RuntimeException(ex.getMessage());
-        }  
-        finally{
-            Conexao.fecharConexao();
-        }
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("AulaJpaManyToManyPU");
+        
+        EntityManager em = emf.createEntityManager();
+        
+        em.getTransaction().begin();
+        em.persist(p);
+        em.getTransaction().commit();
+         
         return p;
     }
 }

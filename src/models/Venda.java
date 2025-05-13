@@ -22,12 +22,12 @@ public class Venda implements Serializable {
     @JoinColumn(name = "id")
     private Cliente cliente;
     @ManyToMany
-    @JoinTable(
+   /* @JoinTable(
         name="Venda_Produto",
         joinColumns= @JoinColumn(name="id_venda"),
         inverseJoinColumns = @JoinColumn(name="id_produto")
     )
-    private List<Produto> produtos;
+    private List<Produto> produtos; */
 
     public Cliente getCliente() {
         return cliente;
@@ -37,14 +37,14 @@ public class Venda implements Serializable {
         this.cliente = cliente;
     }
 
-    public List<Produto> getProdutos() {
+   /* public List<Produto> getProdutos() {
         return produtos;
     }
 
     public void setProdutos(List<Produto> produtos) {
         this.produtos = produtos;
     }
-
+*/
     public Long getId() {
         return id;
     }
