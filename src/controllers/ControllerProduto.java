@@ -15,14 +15,15 @@ import models.Produto;
 public class ControllerProduto {
     
     
-    public Produto cadastrar(String nome, String tipo,String quantidadeT, String precoT){
+    public void cadastrar(String nome, String tipo,String quantidadeT, String precoT){
         //processar regras de negocio
         //Produto retorno = DaoProduto.salvar(cliente);
         //return cliente;
         double preco=Double.parseDouble(precoT);
         int quantidade=Integer.parseInt(quantidadeT);
         Produto p=new Produto(nome, preco, tipo, quantidade);
-        return  ProdutoDAO.salvar(p);
+        ProdutoDAO daoP=new ProdutoDAO();
+        daoP.salvar(p);
     }
     
    

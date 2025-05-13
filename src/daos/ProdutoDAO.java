@@ -15,16 +15,15 @@ import models.Produto;
  * @author 12252665998
  */
 public class ProdutoDAO {
-    public static Produto salvar(Produto p){
+    public void  salvar(Produto p){
         //acessa banco de dados
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("AulaJpaManyToManyPU");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("Avaliacao_1_POO2PU");
         
         EntityManager em = emf.createEntityManager();
         
         em.getTransaction().begin();
         em.persist(p);
         em.getTransaction().commit();
-         
-        return p;
+    
     }
 }
