@@ -1,8 +1,10 @@
+package models;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package models;
+
 
 import java.io.Serializable;
 import javax.persistence.Entity;
@@ -19,7 +21,6 @@ import javax.persistence.Table;
 @Table(name="Produtos")
 public class Produto implements Serializable {
 
-    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
@@ -27,6 +28,10 @@ public class Produto implements Serializable {
     private double preco;
     private String tipo;
     private int quantidade;
+    
+    public Produto(){
+        
+    };
 
     public Produto(String nome, double preco, String tipo, int quantidade) {
         this.nome = nome;

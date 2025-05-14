@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
 public class Cliente implements Serializable {
@@ -17,6 +18,10 @@ public class Cliente implements Serializable {
     private String cpf;
     private String telefone;
     private int pontos;
+    
+    public Cliente(){
+        
+    };
 
     public Cliente(String nome, String cpf, String telefone) {
         this.nome = nome;
@@ -90,3 +95,4 @@ public class Cliente implements Serializable {
     }
     
 }
+
