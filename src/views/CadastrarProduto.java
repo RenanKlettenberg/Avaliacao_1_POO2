@@ -1,10 +1,17 @@
+package views;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package views;
 
-import controllers.ControllerProduto;
+
+
+import models.Produto;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
 
 /**
  *
@@ -236,10 +243,24 @@ public class CadastrarProduto extends javax.swing.JFrame {
     }//GEN-LAST:event_PrecoInputActionPerformed
 
     private void SalvaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalvaBtnActionPerformed
-        ControllerProduto control=new ControllerProduto();
-        System.out.println("1"+NomeInput.getText()+"2"+TipoInput.getText()+"3"+QuantidadeInput.getText()+"4"+PrecoInput.getText());
-        control.cadastrar(NomeInput.getText(),TipoInput.getText(),QuantidadeInput.getText(),PrecoInput.getText());
         
+        System.out.println("1"+NomeInput.getText()+"2"+TipoInput.getText()+"3"+QuantidadeInput.getText()+"4"+PrecoInput.getText());
+        String nome=NomeInput.getText();
+        String tipo=TipoInput.getText();
+        double precoo=Double.parseDouble(PrecoInput.getText());
+        int qtd=Integer.parseInt(QuantidadeInput.getText());
+        Produto p =new Produto(nome,precoo,tipo,qtd);
+        
+        
+        EntityManagerFactory emf =Persistence.createEntityManagerFactory("Avaliacao_1_POO2PU");
+        EntityManager em = emf.createEntityManager();
+        
+        em.getTransaction().begin();
+        em.persist(p);
+        em.getTransaction().commit();
+        
+        
+        //),,QuantidadeInput.getText(),dPrecoInput.getText()
     }//GEN-LAST:event_SalvaBtnActionPerformed
 
     /**
