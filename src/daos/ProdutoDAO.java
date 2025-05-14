@@ -16,7 +16,7 @@ import models.Produto;
  */
 public class ProdutoDAO {
     public void  salvar(Produto p){
-        //acessa banco de dados
+        
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("Avaliacao_1_POO2PU");
         
         EntityManager em = emf.createEntityManager();
