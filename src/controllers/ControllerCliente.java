@@ -16,4 +16,13 @@ public class ControllerCliente {
         return dao.cadastrar(c);
     }
     
+    public boolean editar(String nome, String telefone, String cpf){
+        Cliente c = new Cliente(nome,cpf,telefone);
+        return dao.editar(c);
+    }
+    
+    public void edicao(){
+        //Leva para a tela e carrega 
+    }
+    
 }
