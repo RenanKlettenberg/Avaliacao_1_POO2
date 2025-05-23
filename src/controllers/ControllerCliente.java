@@ -1,6 +1,7 @@
 package controllers;
 
 import daos.ClienteDAO;
+import java.util.ArrayList;
 import models.Cliente;
 
 public class ControllerCliente {
@@ -23,6 +24,10 @@ public class ControllerCliente {
     
     public void edicao(){
         //Leva para a tela e carrega 
+    }
+
+    public ArrayList<Cliente> getAll() {
+        return null;
     }
     
 }

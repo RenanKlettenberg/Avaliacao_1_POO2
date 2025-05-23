@@ -1,33 +1,26 @@
 package views;
 
-import controllers.ControllerCliente;
 import controllers.ControllerProduto;
 import java.util.ArrayList;
 import javax.swing.JLabel;
 import javax.swing.table.DefaultTableModel;
-import models.Cliente;
 import models.Produto;
 
-public class ListarVendas extends javax.swing.JFrame {
+public class ListarProdutos extends javax.swing.JFrame {
 
-    public ListarVendas() {
+    public ListarProdutos() {
         initComponents();
         
         // Pegue o modelo da tabela
         DefaultTableModel model = (DefaultTableModel) tabela.getModel();
 
-        ControllerVenda controllerVenda = new ControllerVenda();
-        ControllerCliente controllerCliente = new ControllerCliente();
-        ControllerProduto controllerProduto = new ControllerProduto();
-        
-        ArrayList<Venda> vendas = controller.getAll();
+        ControllerProduto controller = new ControllerProduto();
 
-        for (Venda v : vendas) {
-            Cliente c = v.getCliente();
-            ArrayList<Produto> p = v.getProdutos();
+        ArrayList<Produto> produtos = controller.getAll();
 
+        for (Produto p : produtos) {
             // Crie os dados da nova linha (respeitando a ordem das colunas)
-            Object[] novaLinha = {c.getNome(),c.getCpf(), p.size(), v.calcTotal()};
+            Object[] novaLinha = {p.getNome(),p.getPreco(),p.getTipo(), p.getQuantidade()};
 
             // Adicione a nova linha
             model.addRow(novaLinha);
@@ -64,7 +57,7 @@ public class ListarVendas extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Padaria Pão Duro");
 
-        jLabel2.setText("> Venda > Listagem");
+        jLabel2.setText("> Cliente > Listagem");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -75,7 +68,7 @@ public class ListarVendas extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
-                .addContainerGap(182, Short.MAX_VALUE))
+                .addContainerGap(180, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -90,23 +83,21 @@ public class ListarVendas extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 
-        jLabel5.setText("Todas vendas");
+        jLabel5.setText("Todos clientes");
 
         tabela.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"Renan", "1232152",  new Integer(55),  new Float(2.0)},
-                {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null}
             },
             new String [] {
-                "Cliente", "CPF", "Produtos", "Valor total"
+                "Nome", "Preço", "Tipo", "Quantidade"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Float.class
+                java.lang.String.class, java.lang.Float.class, java.lang.String.class, java.lang.Integer.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false
@@ -228,9 +219,7 @@ public class ListarVendas extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_addBtnActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+   
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -245,13 +234,13 @@ public class ListarVendas extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ListarVendas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ListarProdutos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ListarVendas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ListarProdutos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ListarVendas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ListarProdutos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ListarVendas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ListarProdutos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -265,7 +254,7 @@ public class ListarVendas extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ListarVendas().setVisible(true);
+                new ListarProdutos().setVisible(true);
             }
         });
     }
