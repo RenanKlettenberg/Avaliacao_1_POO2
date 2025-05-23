@@ -85,7 +85,7 @@
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="180" max="32767" attributes="0"/>
+                  <EmptySpace pref="172" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -112,7 +112,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
-            <Property name="text" type="java.lang.String" value="&gt; Cliente &gt; Listagem"/>
+            <Property name="text" type="java.lang.String" value="&gt; Produto &gt; Listagem"/>
           </Properties>
         </Component>
       </SubComponents>
@@ -187,7 +187,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel5">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Todos clientes"/>
+            <Property name="text" type="java.lang.String" value="Todos produtos"/>
           </Properties>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane1">

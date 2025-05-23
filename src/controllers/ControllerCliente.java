@@ -22,12 +22,20 @@ public class ControllerCliente {
         return dao.editar(c);
     }
     
-    public void edicao(){
+    public void edicao(Cliente clienteSelecionado){
         //Leva para a tela e carrega 
     }
 
     public ArrayList<Cliente> getAll() {
         return null;
+    }
+
+    public void deletar(Cliente clienteSelecionado) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public void criacao() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
 }

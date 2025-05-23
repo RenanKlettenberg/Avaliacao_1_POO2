@@ -8,25 +8,47 @@ import models.Cliente;
 
 public class ListarClientes extends javax.swing.JFrame {
 
+    public static Cliente clienteSelecionado;
+    ControllerCliente controller;
+
     public ListarClientes() {
         initComponents();
 
         // Pegue o modelo da tabela
         DefaultTableModel model = (DefaultTableModel) tabela.getModel();
 
-        ControllerCliente controller = new ControllerCliente();
+        controller = new ControllerCliente();
 
         ArrayList<Cliente> clientes = controller.getAll();
-
+        clientes = new ArrayList<Cliente>();
+        clientes.add(new Cliente("renan","1233","59"));
         for (Cliente c : clientes) {
             // Crie os dados da nova linha (respeitando a ordem das colunas)
-            Object[] novaLinha = {c.getNome(),c.getCpf(),c.getTelefone(), c.getPontos()};
+            Object[] novaLinha = {c.getNome(), c.getCpf(), c.getTelefone(), c.getPontos()};
 
             // Adicione a nova linha
             model.addRow(novaLinha);
         }
+
+        tabela.getSelectionModel().addListSelectionListener(e -> {
+            // Evita execução duplicada (causada por ajustes internos da JTable)
+            if (!e.getValueIsAdjusting()) {
+                int linhaSelecionada = tabela.getSelectedRow();
+
+                // Verifica se alguma linha está selecionada
+                if (linhaSelecionada != -1) {
+                    String nome = tabela.getValueAt(linhaSelecionada, 0).toString();
+                    String cpf = tabela.getValueAt(linhaSelecionada, 1).toString();
+                    String telefone = tabela.getValueAt(linhaSelecionada, 2).toString();
+                    int pontos = Integer.parseInt(tabela.getValueAt(linhaSelecionada, 3).toString());
+
+                    clienteSelecionado = new Cliente(nome,cpf,telefone);
+                    clienteSelecionado.setPontos(pontos);
+                }
+            }
+        });
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -208,15 +230,15 @@ public class ListarClientes extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
-        // TODO add your handling code here:
+        controller.deletar(clienteSelecionado);
     }//GEN-LAST:event_deleteBtnActionPerformed
 
     private void editBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editBtnActionPerformed
-        // TODO add your handling code here:
+        controller.edicao(clienteSelecionado);
     }//GEN-LAST:event_editBtnActionPerformed
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
-        // TODO add your handling code here:
+        controller.criacao();
     }//GEN-LAST:event_addBtnActionPerformed
 
     /**

@@ -9,7 +9,7 @@ import models.Cliente;
 import models.Produto;
 
 public class ListarVendas extends javax.swing.JFrame {
-
+    
     public ListarVendas() {
         initComponents();
         

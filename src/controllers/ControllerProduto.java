@@ -6,6 +6,7 @@ package controllers;
 
 
 import daos.ProdutoDAO;
+import java.util.ArrayList;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -36,6 +37,10 @@ public class ControllerProduto {
         em.getTransaction().commit();
         
         //daoP.salvar(p);
+    }
+
+    public ArrayList<Produto> getAll() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
    

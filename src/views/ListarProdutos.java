@@ -8,13 +8,16 @@ import models.Produto;
 
 public class ListarProdutos extends javax.swing.JFrame {
 
+    ControllerProduto controller;
+    public static Produto produtoSelecionado;
+    
     public ListarProdutos() {
         initComponents();
         
         // Pegue o modelo da tabela
         DefaultTableModel model = (DefaultTableModel) tabela.getModel();
 
-        ControllerProduto controller = new ControllerProduto();
+        controller = new ControllerProduto();
 
         ArrayList<Produto> produtos = controller.getAll();
 
@@ -25,6 +28,23 @@ public class ListarProdutos extends javax.swing.JFrame {
             // Adicione a nova linha
             model.addRow(novaLinha);
         }
+        
+        tabela.getSelectionModel().addListSelectionListener(e -> {
+            // Evita execução duplicada (causada por ajustes internos da JTable)
+            if (!e.getValueIsAdjusting()) {
+                int linhaSelecionada = tabela.getSelectedRow();
+
+                // Verifica se alguma linha está selecionada
+                if (linhaSelecionada != -1) {
+                    String nome = tabela.getValueAt(linhaSelecionada, 0).toString();
+                    float preco = Float.parseFloat(tabela.getValueAt(linhaSelecionada, 1).toString());
+                    String tipo = tabela.getValueAt(linhaSelecionada, 2).toString();
+                    int quantidade = Integer.parseInt(tabela.getValueAt(linhaSelecionada, 3).toString());
+
+                    produtoSelecionado = new Produto(nome,preco,tipo,quantidade);
+                }
+            }
+        });
     }
 
     @SuppressWarnings("unchecked")
@@ -57,7 +77,7 @@ public class ListarProdutos extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Padaria Pão Duro");
 
-        jLabel2.setText("> Cliente > Listagem");
+        jLabel2.setText("> Produto > Listagem");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -68,7 +88,7 @@ public class ListarProdutos extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
-                .addContainerGap(180, Short.MAX_VALUE))
+                .addContainerGap(172, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -83,7 +103,7 @@ public class ListarProdutos extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 
-        jLabel5.setText("Todos clientes");
+        jLabel5.setText("Todos produtos");
 
         tabela.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -208,15 +228,15 @@ public class ListarProdutos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
-        // TODO add your handling code here:
+        controller.deletar(produtoSelecionado);
     }//GEN-LAST:event_deleteBtnActionPerformed
 
     private void editBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editBtnActionPerformed
-        // TODO add your handling code here:
+        controller.edicao(produtoSelecionado);
     }//GEN-LAST:event_editBtnActionPerformed
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
-        // TODO add your handling code here:
+        controller.criacao();
     }//GEN-LAST:event_addBtnActionPerformed
 
    
